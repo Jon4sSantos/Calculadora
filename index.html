@@ -2,217 +2,242 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+          * {
+               box-sizing: border-box;
+               font-family: Arial, Helvetica, sans-serif;
+          }
 
-        body {
-            background-color: rgb(59, 59, 59);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+          body {
+               background-color: rgb(59, 59, 59);
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+          }
 
-        #calculadora {
-            background-image: linear-gradient(to right, rgb(69, 62, 62), lightgray);
-            height: 800px;
-            width: 500px;
-            border-radius: 10px;
-            outline: 5px solid rgb(41, 40, 40);
-        }
+          #calculadora {
+               background-image: linear-gradient(to right, rgb(69, 62, 62), rgb(136, 136, 136));
+               height: 800px;
+               width: 500px;
+               border-radius: 10px;
+               outline: 5px solid rgb(41, 40, 40);
+          }
 
-        #espacoTela {
-            height: 30%;
-            display: flex;
-            justify-content: center;
-            padding-top: 10px;
-            align-items: center;
-            border-radius: 10px 10px 0 0;
-        }
+          #espacoTela {
+               height: 30%;
+               display: flex;
+               justify-content: center;
+               padding-top: 10px;
+               align-items: center;
+               border-radius: 10px 10px 0 0;
+          }
 
-        #tela {
-            background-image: linear-gradient(to right, rgb(22, 68, 22), rgb(107, 229, 156));
-            border-radius: 10px;
-            height: 70%;
-            width: 85%;
-            padding: 10px;
-            font-size: 3em;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            outline: 5px solid rgba(9, 49, 9, 0.753);
-            overflow: hidden;
-        }
+          #tela {
+               background-image: linear-gradient(to right, rgb(22, 68, 22), rgb(40, 148, 83));
+               border-radius: 10px;
+               height: 70%;
+               width: 85%;
+               padding: 10px;
+               font-size: 3em;
+               font-weight: bold;
+               display: flex;
+               justify-content: flex-end;
+               align-items: center;
+               outline: 5px solid rgba(9, 49, 9, 0.753);
+               overflow: hidden;
+               box-shadow: inset -6px 5px 20px 3px rgba(0, 0, 0, 0.712);
 
-        #espacoTeclado {
-            padding: 10%;
-            height: 70%;
-            display: flex;
-            gap: 10px;
-        }
+          }
 
-        #botoes {
-            display: flex;
-            flex-direction: column;
-            width: 75%;
-            gap: 10px;
-        }
+          #espacoTeclado {
+               padding: 10%;
+               height: 70%;
+               display: flex;
+               gap: 10px;
+          }
 
-        #exibir {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr;
-            height: 24%;
-        }
+          #botoes {
+               display: flex;
+               flex-direction: column;
+               width: 75%;
+               gap: 8px;
+          }
 
-        #botaoIgual {
-            grid-column: 3;
-        }
+          #exibir {
+               display: grid;
+               grid-template-columns: 1fr 1fr 1fr;
+               grid-template-rows: 1fr;
+               height: 24%;
+          }
 
-        #numeros {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            height: 75%;
-            gap: 10px;
-        }
+          #exibir .botao {
+               background-color: rgba(255, 255, 255, 0.678);
+               height: 98%;
+          }
 
-        #gp1 {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-        }
 
-        #gp2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-        }
+          #botaoIgual {
+               grid-column: 3;
+          }
 
-        #gp3 {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-        }
+          #numeros {
+               display: grid;
+               grid-template-columns: 1fr 1fr 1fr;
+               height: 75%;
+               gap: 10px;
+          }
 
-        .numero, .botao {
-            font-size: 2em;
-            font-weight: bold;
-            border-radius: 10px;
-            display: flex;
-            background-color: grey;
-            box-shadow: -2px 2px 10px 3px black;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: .4s;
-        }
+          #gp1 {
+               display: grid;
+               grid-template-columns: 1fr;
+               grid-template-rows: 1fr 1fr 1fr 1fr;
+               gap: 10px;
+          }
 
-        .numero:hover, .botao:hover {
-            background-color: rgb(74, 71, 71);
-            scale: calc(1.1);
-            box-shadow: none;
-            font-size: 2.3em;
-            border: 3px solid rgb(141, 141, 141);
-        }
+          #gp2 {
+               display: grid;
+               grid-template-columns: 1fr;
+               grid-template-rows: 1fr 1fr 1fr 1fr;
+               gap: 10px;
+          }
 
-        #operacoes {
-            height: 100%;
-            width: 25%;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-        }
-    </style>
-    <title>Document</title>
+          #gp3 {
+               display: grid;
+               grid-template-columns: 1fr;
+               grid-template-rows: 1fr 1fr 1fr 1fr;
+               gap: 10px;
+          }
+
+          .numero,
+          .botao {
+               font-size: 2em;
+               font-weight: bold;
+               border-radius: 10px;
+               display: flex;
+               background-color: grey;
+               box-shadow: -2px 2px 10px 3px black;
+               justify-content: center;
+               align-items: center;
+               cursor: pointer;
+               transition: .4s;
+               transition: font-size 0s;
+          }
+
+          .numero:hover,
+          .botao:hover {
+               background-color: rgba(100, 100, 100, 0.822);
+               box-shadow: -4px 4px 10px 1px black;
+          }
+
+          .numero:active,
+          .botao:active {
+               background-color: rgba(36, 35, 35, 0.822);
+               box-shadow: none;
+               font-size: 1.5em;
+               border: 2px solid rgb(0, 0, 0);
+               box-shadow: inset -2px 2px 5px 0px black;
+          }
+
+          #operacoes {
+               height: 100%;
+               width: 25%;
+               display: grid;
+               grid-template-columns: 1fr;
+               grid-template-rows: 1fr 1fr 1fr 1fr;
+               gap: 10px;
+          }
+
+          #operacoes .botao {
+               background-color: rgba(255, 166, 0, 0.829);
+          }
+     </style>
+     <title>Document</title>
 </head>
 
 <body>
-    <div id="calculadora">
-        <div id="espacoTela">
-            <div id="tela">
+     <div id="calculadora">
+          <div id="espacoTela">
+               <div id="tela">
 
-            </div>
-        </div>
-        <div id="espacoTeclado">
-            <div id="botoes">
-                <div id="exibir">
-                    <div class="botao" id="limpar">AC</div>
-                    <div class="botao" id="botaoIgual">=</div>
-                </div>
-                <div id="numeros">
-                    <div id="gp1">
-                        <div class="numero" id="botao7">7</div>
-                        <div class="numero" id="botao4">4</div>
-                        <div class="numero" id="botao1">1</div>
+               </div>
+          </div>
+          <div id="espacoTeclado">
+               <div id="botoes">
+                    <div id="exibir">
+                         <div class="botao" id="limpar">AC</div>
+                         <div class="botao" id="botaoIgual">=</div>
                     </div>
-                    <div id="gp2">
-                        <div class="numero" id="botao8">8</div>
-                        <div class="numero" id="botao5">5</div>
-                        <div class="numero" id="botao2">2</div>
-                        <div class="numero" id="botao0">0</div>
+                    <div id="numeros">
+                         <div id="gp1">
+                              <div class="numero" id="botao7">7</div>
+                              <div class="numero" id="botao4">4</div>
+                              <div class="numero" id="botao1">1</div>
+                         </div>
+                         <div id="gp2">
+                              <div class="numero" id="botao8">8</div>
+                              <div class="numero" id="botao5">5</div>
+                              <div class="numero" id="botao2">2</div>
+                              <div class="numero" id="botao0">0</div>
+                         </div>
+                         <div id="gp3">
+                              <div class="numero" id="botao9">9</div>
+                              <div class="numero" id="botao6">6</div>
+                              <div class="numero" id="botao3">3</div>
+                         </div>
                     </div>
-                    <div id="gp3">
-                        <div class="numero" id="botao9">9</div>
-                        <div class="numero" id="botao6">6</div>
-                        <div class="numero" id="botao3">3</div>
-                    </div>
-                </div>
-            </div>
-            <div id="operacoes">
-                <div class="botao" id="botao-">-</div>
-                <div class="botao" id="botao+">+</div>
-                <div class="botao" id="botao/">/</div>
-                <div class="botao" id="botaox">x</div>
-            </div>
-        </div>
-    </div>
-    <script>
-     const tela = document.getElementById('tela');
-     const btnNumber = document.querySelectorAll('.numero');
-     const btnOperation = document.querySelectorAll('#operacoes .botao');
-     const btnEqual = document.getElementById('botaoIgual');
-     const btnClear = document.getElementById('limpar');
+               </div>
+               <div id="operacoes">
+                    <div class="botao" id="botao-">-</div>
+                    <div class="botao" id="botao+">+</div>
+                    <div class="botao" id="botao/">/</div>
+                    <div class="botao" id="botaox">x</div>
+               </div>
+          </div>
+     </div>
+     <script>
+          const tela = document.getElementById('tela');
+          const btnNumber = document.querySelectorAll('.numero');
+          const btnOperation = document.querySelectorAll('#operacoes .botao');
+          const btnEqual = document.getElementById('botaoIgual');
+          const btnClear = document.getElementById('limpar');
+          const operadores = ['+', '-', 'x', '/'];
+          let expressao = "";
 
-     let expressao = "";
-
-     btnNumber.forEach(botao => {
-          botao.addEventListener('click', () => {
-               expressao += botao.textContent;
-               tela.textContent = expressao;
+          btnNumber.forEach(botao => {
+               botao.addEventListener('click', () => {
+                    expressao += botao.textContent;
+                    tela.textContent = expressao;
+               });
           });
-     });
 
-     btnOperation.forEach(botao => {
-          botao.addEventListener('click', () => {
-               let op = botao.textContent;
 
-               expressao += op;
-               tela.textContent = expressao;
+          btnOperation.forEach(botao => {
+               botao.addEventListener('click', () => {
+                    const ultimo = expressao.slice(-1);
+                    if (!operadores.includes(ultimo) && expressao !== "") {
+                         expressao += botao.textContent;
+                         tela.textContent = expressao;
+                    }
+               });
           });
-     });
-
-     botaoIgual.addEventListener('click', () => {
-          try {
-               const resultado = eval(expressao);
-               tela.textContent = resultado;
-               expressao = resultado.toString();
-          } catch {
-               tela.textContent = "Vai Toma no Cu";
+          botaoIgual.addEventListener('click', () => {
+               try {
+                    const resultado = eval(expressao);
+                    tela.textContent = resultado;
+                    expressao = resultado.toString();
+               } catch {
+                    tela.textContent = "ERROR";
+                    expressao = "";
+               }
+          });
+          btnClear.addEventListener('click', () => {
                expressao = "";
-          }
-     });
-     btnClear.addEventListener('click', () => {
-          expressao = "";
-          tela.textContent = "";
-     });
-    </script>
+               tela.textContent = "";
+          });
+     </script>
 </body>
+
 </html>
