@@ -19,8 +19,8 @@
 
         #calculadora {
             background-image: linear-gradient(to right, rgb(69, 62, 62), lightgray);
-            height: 70%;
-            width: 30%;
+            height: 800px;
+            width: 500px;
             border-radius: 10px;
             outline: 5px solid rgb(41, 40, 40);
         }
@@ -45,6 +45,7 @@
             justify-content: flex-end;
             align-items: center;
             outline: 5px solid rgba(9, 49, 9, 0.753);
+            overflow: hidden;
         }
 
         #espacoTeclado {
@@ -143,7 +144,7 @@
         <div id="espacoTeclado">
             <div id="botoes">
                 <div id="exibir">
-                    <div class="botao">AC</div>
+                    <div class="botao" id="limpar">AC</div>
                     <div class="botao" id="botaoIgual">=</div>
                 </div>
                 <div id="numeros">
@@ -174,6 +175,44 @@
         </div>
     </div>
     <script>
+     const tela = document.getElementById('tela');
+     const btnNumber = document.querySelectorAll('.numero');
+     const btnOperation = document.querySelectorAll('#operacoes .botao');
+     const btnEqual = document.getElementById('botaoIgual');
+     const btnClear = document.getElementById('limpar');
+
+     let expressao = "";
+
+     btnNumber.forEach(botao => {
+          botao.addEventListener('click', () => {
+               expressao += botao.textContent;
+               tela.textContent = expressao;
+          });
+     });
+
+     btnOperation.forEach(botao => {
+          botao.addEventListener('click', () => {
+               let op = botao.textContent;
+
+               expressao += op;
+               tela.textContent = expressao;
+          });
+     });
+
+     botaoIgual.addEventListener('click', () => {
+          try {
+               const resultado = eval(expressao);
+               tela.textContent = resultado;
+               expressao = resultado.toString();
+          } catch {
+               tela.textContent = "Vai Toma no Cu";
+               expressao = "";
+          }
+     });
+     btnClear.addEventListener('click', () => {
+          expressao = "";
+          tela.textContent = "";
+     });
     </script>
 </body>
 </html>
