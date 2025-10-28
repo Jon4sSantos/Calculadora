@@ -118,6 +118,7 @@
                display: flex;
                background-color: grey;
                box-shadow: -2px 2px 10px 3px black;
+               border: 1px solid rgba(211, 211, 211, 0.438);
                justify-content: center;
                align-items: center;
                cursor: pointer;
@@ -136,7 +137,7 @@
                background-color: rgba(36, 35, 35, 0.822);
                box-shadow: none;
                font-size: 1.5em;
-               border: 2px solid rgb(0, 0, 0);
+               border: 2px solid gray;
                box-shadow: inset -2px 2px 5px 0px black;
           }
 
@@ -171,20 +172,20 @@
                     </div>
                     <div id="numeros">
                          <div id="gp1">
-                              <div class="numero" id="botao7">7</div>
-                              <div class="numero" id="botao4">4</div>
-                              <div class="numero" id="botao1">1</div>
+                              <button class="numero" id="botao7">7</button>
+                              <button class="numero" id="botao4">4</button>
+                              <button class="numero" id="botao1">1</button>
                          </div>
                          <div id="gp2">
-                              <div class="numero" id="botao8">8</div>
-                              <div class="numero" id="botao5">5</div>
-                              <div class="numero" id="botao2">2</div>
-                              <div class="numero" id="botao0">0</div>
+                              <button class="numero" id="botao8">8</button>
+                              <button class="numero" id="botao5">5</button>
+                              <button class="numero" id="botao2">2</button>
+                              <button class="numero" id="botao0">0</button>
                          </div>
                          <div id="gp3">
-                              <div class="numero" id="botao9">9</div>
-                              <div class="numero" id="botao6">6</div>
-                              <div class="numero" id="botao3">3</div>
+                              <button class="numero" id="botao9">9</button>
+                              <button class="numero" id="botao6">6</button>
+                              <button class="numero" id="botao3">3</button>
                          </div>
                     </div>
                </div>
@@ -203,6 +204,7 @@
           const btnEqual = document.getElementById('botaoIgual');
           const btnClear = document.getElementById('limpar');
           const operadores = ['+', '-', 'x', '/'];
+          
           let expressao = "";
 
           btnNumber.forEach(botao => {
