@@ -209,36 +209,26 @@
           
           let expressao = "";
 
-          btnNumber.forEach(botao => {
-               botao.addEventListener('click', () => {
-                    expressao += botao.textContent;
+          btnNumber.forEach(numero => {
+               numero.addEventListener('click', ()=> {
+                    expressao += numero.textContent;
                     tela.textContent = expressao;
                });
           });
 
-
-          btnOperation.forEach(botao => {
-               botao.addEventListener('click', () => {
-                    const ultimo = expressao.slice(-1);
-                    if (!operadores.includes(ultimo) && expressao !== "") {
-                         expressao += botao.textContent;
-                         tela.textContent = expressao;
-                    }
+          btnOperation.forEach(op => {
+               op.addEventListener('click', ()=> {
+                    expressao += op.textContent;
+                    tela.textContent = expressao;
                });
           });
-          botaoIgual.addEventListener('click', () => {
-               try {
-                    const resultado = eval(expressao);
-                    tela.textContent = resultado;
-                    expressao = resultado.toString();
-               } catch {
-                    tela.textContent = "ERROR";
-                    expressao = "";
-               }
-          });
-          btnClear.addEventListener('click', () => {
-               expressao = "";
-               tela.textContent = "";
+
+          btnEqual.addEventListener('click', ()=> {
+          }); /* FALTA ISSO POHA */
+
+          btnClear.addEventListener('click', ()=> {
+               expressao = '';
+               tela.textContent = expressao;
           });
      </script>
 </body>
