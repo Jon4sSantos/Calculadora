@@ -219,13 +219,29 @@
 
           btnOperation.forEach(op => {
                op.addEventListener('click', ()=> {
-                    expressao += op.textContent;
-                    tela.textContent = expressao;
+                    const ultimoChar = expressao.slice(-1);
+                    const operadorAtual = op.textContent;
+
+                    if(!operadores.includes(ultimoChar) && expressao !== "") {
+                         expressao += op.textContent;
+                         tela.textContent = expressao;
+                    } else if(operadores.includes(ultimoChar)) {
+                         expressao = expressao.slice(0, -1) + operadorAtual;
+                         tela.textContent = expressao;
+                    }
                });
           });
 
           btnEqual.addEventListener('click', ()=> {    
-               
+               try {
+                    let calculo = expressao.replace(/x/g, '*');
+                    let resultado = eval(calculo);
+                    tela.textContent = resultado;
+                    expressao = resultado.toString();
+               } catch (erro) {
+                    tela.textContent = 'Erro';
+                    expressao = '';
+               }
           }); /* FALTA ISSO POHA */
 
           btnClear.addEventListener('click', ()=> {
